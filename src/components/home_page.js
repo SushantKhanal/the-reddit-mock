@@ -82,10 +82,16 @@ class HomePage extends Component {
                             />
                             {post.comments && post.comments.length}
                           </List.Content>
+                          <Link to={`/editPost/${post.id}`}>
+                                <Button>
+                                    Edit Post
+                                </Button> 
+                          </Link>
+
                         </List.Content>
                       </List.Item>
                       <div className="post-btn-wrapper">
-                        
+ 
                       </div>
                     </Segment>
                   </List>

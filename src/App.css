@@ -25,7 +25,9 @@ body {
   .time {
     display: inline-block;
   }
-  
+  .edit-post {
+    float: right;
+  }
   .votes {
     display: flex;
     justify-content: flex-start;
