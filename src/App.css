@@ -1,0 +1,48 @@
+body {
+    background-color: #fcf8f8;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .category-message-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .author,
+  .time,
+  .votes,
+  .comments {
+    color: #adadad;
+    font-size: 0.95em;
+    padding-right: 1em;
+    margin: 0 0 0.5em 1.2em;
+  }
+  
+  .author,
+  .time {
+    display: inline-block;
+  }
+  
+  .votes {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .vote-score {
+    background-color: #00b5ad;
+    color: white;
+    border-radius: 8px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+  }
+  
+  div.content.votes {
+    margin-top: 0.6em;
+  }
+  
+
+  
