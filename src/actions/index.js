@@ -27,17 +27,30 @@ export const fetchAllPosts = () => dispatch =>
     )
     .then(posts=> dispatch(receivePosts(posts)));
 
+//action to update vote count 
 export const updateVoteCount = (postId, option) => ({
     type: UPDATE_VOTE_COUNT,
     postId: postId,
     option: option
 })    
 
+//thunk action to update vote count 
 export const votePost = (postId, option) => dispatch =>
     api
     .votePost(postId, option)
     .then(()=> dispatch(updateVoteCount(postId, option)));    
 
+//thunk action to recieve post
+export const receivePostById = (postId) => dispatch =>
+    api
+    .getSinglePost(postId)
+    .then((post)=> dispatch(receivePosts(post)));
+
+//thunk action to save edited post
+export const saveEditedPost = (post, postId) => dispatch =>
+    api
+    .editPost(post, postId)
+    .then((post)=> dispatch(receivePosts(post)));
 
 export const changeSort = (value) => ({
     type: CHANGE_SORT,
