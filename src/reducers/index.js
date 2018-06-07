@@ -4,7 +4,9 @@ import {
     RECEIVE_POSTS,
     CHANGE_SORT,
     UPDATE_VOTE_COUNT, 
+    ADD_POST
 } from '../actions'
+import { CommentActions } from "semantic-ui-react";
 
 function posts(state={}, action) {
     switch(action.type) {
@@ -23,6 +25,9 @@ function posts(state={}, action) {
                 return post
             })
             return {...state, posts: updatedPosts};
+
+        case ADD_POST:
+            return {...state, posts: state.posts.push[CommentActions.post]}    
 
         default:
             return {state};

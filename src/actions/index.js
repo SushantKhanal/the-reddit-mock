@@ -3,6 +3,7 @@ import * as api from "../utils/api";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const CHANGE_SORT = "CHANGE_SORT";
 export const UPDATE_VOTE_COUNT = "UPDATE_VOTE_COUNT";
+export const ADD_POST = "ADD_POST"
 
 //Thunk is used to handle asynchronous actions in redux
 
@@ -34,6 +35,12 @@ export const updateVoteCount = (postId, option) => ({
     option: option
 })    
 
+//action to add new post
+export const addPost = (post) => ({
+    type: ADD_POST,
+    post: post
+})
+
 //thunk action to update vote count 
 export const votePost = (postId, option) => dispatch =>
     api
@@ -51,6 +58,15 @@ export const saveEditedPost = (post, postId) => dispatch =>
     api
     .editPost(post, postId)
     .then((post)=> dispatch(receivePosts(post)));
+
+//thunk action to save the new post
+export const addNewPost = (post) => dispatch =>
+    api
+    .addPost(post)
+    .then(
+        (post) => 
+        dispatch(addPost(post))
+    );
 
 export const changeSort = (value) => ({
     type: CHANGE_SORT,
