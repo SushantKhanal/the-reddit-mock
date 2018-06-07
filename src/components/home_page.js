@@ -30,7 +30,7 @@ class HomePage extends Component {
     return (
         <div className="page-wrapper">
         <div className="content-wrapper">
-          <h1>Ladies and Gentlemen, I present to you, the list of all posts!!!</h1>
+          <h1>Ladies and Gentlemen, I present to you, the list of the posts!!!</h1>
           <div className="post-container">
             {/*Check if posts exist, then filter over the posts, sort the posts,
           and map over the posts, to display them on the HomePage*/
@@ -43,7 +43,9 @@ class HomePage extends Component {
                     <Segment color="teal" raised>
                       <List.Item>
                         <List.Content>
-                          <List.Header>{post.title}</List.Header>
+                          <Link to={`/postDetail/${post.id}`}>
+                            <List.Header>{post.title}</List.Header>
+                          </Link>
                           <List.Content className="author">
                             <Icon name="user" color="teal" size="large" />
                             {post.author}

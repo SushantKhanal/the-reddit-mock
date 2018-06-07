@@ -24,7 +24,6 @@ class EditPost extends Component {
         const { postId } = this.props.match.params
         this.props.receivePostById(postId)
         .then(posts => {
-            console.log(posts);
             this.setState({
                 postId: posts.posts.id,
                 postCategory: posts.posts.category,
