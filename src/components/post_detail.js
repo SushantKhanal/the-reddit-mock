@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import Timestamp from "react-timestamp";
 import Comments from '../components/comments';
+import AddComment from '../components/add_comment';
 
 import {
     List,
@@ -16,7 +17,9 @@ import {
   } from "semantic-ui-react";
 
 class PostDetail extends Component {
-    state = {}
+    state = {
+      commentAdd : false
+    }
     componentDidMount(){
         const { postId } = this.props.match.params
         this.props.receivePostById(postId)
@@ -39,10 +42,17 @@ class PostDetail extends Component {
     thumbsDown(postId, option) {
         this.props.votePost(postId, option);
     }
+
+    addComment = () => {
+      this.setState({
+        commentAdd : true
+      })
+    }
     
     render() {
         const { posts } = this.props.posts;
       return (
+
           <div className="page-wrapper">
           <div className="content-wrapper">
             <h1>Post Details</h1>
@@ -92,22 +102,36 @@ class PostDetail extends Component {
                               />
                               {posts.comments && posts.comments.length}
                             </List.Content>
-                            <Link to={`/editPost/${posts.id}`}>
-                                  <Button>
-                                      Edit Post
-                                  </Button> 
-                            </Link>
+                            <div class="buttons"> 
+                              <Link to={`/editPost/${posts.id}`}>
+                                    <Button>
+                                        Edit Post
+                                    </Button> 
+                              </Link>
+                              <Button onClick={this.addComment}>
+                                 Add comment 
+                              </Button>  
+                              <Button>
+                                  Delete Post
+                              </Button>  
+                            </div>
   
                           </List.Content>
                         </List.Item>
                         <div className="post-btn-wrapper">
-   
                         </div>
                       </Segment>
                   }
             </div>
-            {/* <Comments /> */}
-            <Comments comments={this.state.postComments}/>
+                {
+                  posts &&
+                  <Comments comments={posts.comments}/>
+                }
+                <br/>
+                {
+                  this.state.commentAdd &&
+                  <AddComment />
+                }
           </div>
         </div>
       );

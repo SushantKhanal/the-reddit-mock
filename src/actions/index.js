@@ -51,7 +51,16 @@ export const votePost = (postId, option) => dispatch =>
 export const receivePostById = (postId) => dispatch =>
     api
     .getSinglePost(postId)
-    .then((post)=> dispatch(receivePosts(post)));
+    .then((post)=> 
+        api
+        .getComments(post.id)
+        .then((comments)=>{
+            post.comments = comments
+            return post;
+        }))
+    .then((post)=> 
+        dispatch(receivePosts(post))
+    );
 
 //thunk action to save edited post
 export const saveEditedPost = (post, postId) => dispatch =>
