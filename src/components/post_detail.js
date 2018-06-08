@@ -3,6 +3,7 @@ import * as actions from '../actions';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import Timestamp from "react-timestamp";
+import Comments from '../components/comments';
 
 import {
     List,
@@ -25,7 +26,8 @@ class PostDetail extends Component {
                 postCategory: posts.posts.category,
                 postTitle: posts.posts.title,
                 postBody: posts.posts.body,
-                postAuthor: posts.posts.author
+                postAuthor: posts.posts.author,
+                postComments: posts.posts.comments
             })
         })
     }
@@ -104,7 +106,8 @@ class PostDetail extends Component {
                       </Segment>
                   }
             </div>
-            {/* <Comments/> */}
+            {/* <Comments /> */}
+            <Comments comments={this.state.postComments}/>
           </div>
         </div>
       );
